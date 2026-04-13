@@ -1,0 +1,2 @@
+# rust-odyssey
+rust journey
