@@ -31,7 +31,11 @@ async fn get_user() -> Result<ApiResponse, ApiError> {
 
 #[tokio::main]
 async fn main() {
-    let db_connection_str = String::from("postgresql://neondb_owner:npg_JmuRIzB76KbE@ep-fragrant-brook-aidd4gwy-pooler.c-4.us-east-1.aws.neon.tech/neondb");
+
+    dotenvy::dotenv().ok();
+
+    let db_connection_str = std::env::var("DATABASE_URL")
+        .expect("DATABASE_URL must be set");
 
     let pool = PgPoolOptions::new()
         .max_connections(5)
