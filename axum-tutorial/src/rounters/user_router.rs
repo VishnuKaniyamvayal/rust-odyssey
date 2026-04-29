@@ -11,7 +11,7 @@ async fn getUser() -> Result<ApiResponse, ApiError> {
     return Ok(ApiResponse::OK);
 }
 
-pub fn init_user_router() -> Router<Arc<AppState>> {
+pub fn init_user_router() -> Router<AppState> {
    let router = Router::new()
     .route("/users", get(getUsers)).route("/user/{id}", get(getUser));
 
